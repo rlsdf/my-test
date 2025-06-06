@@ -8,6 +8,8 @@
     "dev:web-a": "turbo run dev --filter=web-a",
     "dev:web-b": "turbo run dev --filter=web-b",
     "build": "turbo run build",
+    "build:web-a": "turbo run build --filter=web-a",
+    "build:web-b": "turbo run build --filter=web-b",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "test": "echo \"Error: no test specified\" && exit 1"
