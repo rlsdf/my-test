@@ -9,6 +9,8 @@ This repository is a simple turborepo using pnpm workspaces.
 ## Scripts
 
 - `pnpm dev` – Run all apps in development mode
+- `pnpm dev:web-a` – Run only **web-a** in development mode
+- `pnpm dev:web-b` – Run only **web-b** in development mode
 - `pnpm build` – Build all packages
 - `pnpm lint` – Lint all packages
 - `pnpm type-check` – Type check all packages

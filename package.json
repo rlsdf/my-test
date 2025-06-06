@@ -5,6 +5,8 @@
   "packageManager": "pnpm@10.11.1",
   "scripts": {
     "dev": "turbo run dev --parallel",
+    "dev:web-a": "turbo run dev --filter=web-a",
+    "dev:web-b": "turbo run dev --filter=web-b",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
