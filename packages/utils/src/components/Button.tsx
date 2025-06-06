@@ -1,6 +1,8 @@
 import React from 'react';
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+}
 
 export const Button: React.FC<ButtonProps> = ({ className = '', ...props }) => (
   <button

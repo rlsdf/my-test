@@ -8,6 +8,9 @@ module.exports = {
     'plugin:react/recommended',
     'prettier'
   ],
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off', // any 허용
+  },
   settings: {
     react: {
       version: 'detect'
