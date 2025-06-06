@@ -16,11 +16,13 @@ export const Table = <T extends Record<string, any>>({
   columns,
   className = '',
 }: TableProps<T>) => (
-  <table className={`min-w-full border-collapse ${className}`}>
-    <thead>
+  <table
+    className={`min-w-full border-collapse rounded-lg shadow-md overflow-hidden ${className}`}
+  >
+    <thead className="bg-indigo-500 text-white">
       <tr>
         {columns.map((col) => (
-          <th key={String(col.key)} className="border px-4 py-2 bg-gray-200">
+          <th key={String(col.key)} className="px-4 py-2 text-left">
             {col.header}
           </th>
         ))}
@@ -28,9 +30,14 @@ export const Table = <T extends Record<string, any>>({
     </thead>
     <tbody>
       {data.map((row, idx) => (
-        <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+        <tr
+          key={idx}
+          className={`${
+            idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+          } hover:bg-indigo-50`}
+        >
           {columns.map((col) => (
-            <td key={String(col.key)} className="border px-4 py-2">
+            <td key={String(col.key)} className="px-4 py-2 border-b">
               {String(row[col.key])}
             </td>
           ))}
