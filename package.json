@@ -1,15 +1,17 @@
 {
   "name": "my-test",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:web-a": "turbo run dev --filter=web-a",
+    "dev:web-b": "turbo run dev --filter=web-b",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.11.1",
   "devDependencies": {
     "turbo": "^2.5.4"
   }
