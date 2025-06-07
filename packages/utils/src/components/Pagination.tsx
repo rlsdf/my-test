@@ -42,16 +42,15 @@ export const Pagination: React.FC<PaginationProps> = ({
         Prev
       </Button>
       {pages.map((p) => (
-        <Button
+        <button
           key={p}
           onClick={() => onPageChange(p)}
-          size="sm"
-          className={`px-3 ${
-            p === currentPage ? 'bg-green-600' : ''
+          className={`px-3 py-1 rounded border border-gray-300 bg-white text-gray-800 ${
+            p === currentPage ? 'font-bold' : ''
           }`}
         >
           {p}
-        </Button>
+        </button>
       ))}
       <Button
         onClick={handleNext}
