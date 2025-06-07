@@ -5,7 +5,11 @@ module.exports = {
     '../../packages/utils/**/*.{ts,tsx,js,jsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['\'Segoe UI\'', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
