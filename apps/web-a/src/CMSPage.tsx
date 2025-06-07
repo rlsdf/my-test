@@ -50,10 +50,15 @@ export const CMSPage: React.FC = () => {
       ...it,
       actions: (
         <>
-          <Button className="mr-2" onClick={() => alert(`edit ${it.id}`)}>
+          <Button
+            size="sm"
+            className="mr-2"
+            onClick={() => alert(`edit ${it.id}`)}
+          >
             edit
           </Button>
           <Button
+            size="sm"
             className="bg-red-500 hover:bg-red-600"
             onClick={() => alert(`delete ${it.id}`)}
           >
