@@ -18,7 +18,8 @@ interface Item {
   createdDate: string;
 }
 
-const fetchItems = () => axios.get<Item[]>('/api/items');
+const fetchItems = (page: number) =>
+  axios.get<Item[]>('/api/items', { params: { page } });
 
 const columns: Column<Item & { actions: React.ReactNode }>[] = [
   { key: 'id', header: 'ID' },
@@ -35,8 +36,8 @@ export const CMSPage: React.FC = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetchItems().then((res) => setItems(res.data));
-  }, []);
+    fetchItems(page).then((res) => setItems(res.data));
+  }, [page]);
 
   const filtered = items.filter(
     (it) =>
@@ -44,11 +45,8 @@ export const CMSPage: React.FC = () => {
       (status === 'all' || it.status === status)
   );
 
-  const pageSize = 20;
-  const totalPages = Math.ceil(filtered.length / pageSize) || 1;
-  const pageData = filtered
-    .slice((page - 1) * pageSize, page * pageSize)
-    .map((it) => ({
+  const totalPages = 3;
+  const pageData = filtered.map((it) => ({
       ...it,
       actions: (
         <>

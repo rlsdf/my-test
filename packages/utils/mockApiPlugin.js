@@ -8,10 +8,16 @@ export function mockApiPlugin() {
   return {
     name: 'mock-api',
     configureServer(server) {
-      server.middlewares.use('/api/items', (_req, res) => {
+      server.middlewares.use('/api/items', (req, res) => {
+        const url = new URL(req.originalUrl || req.url, 'http://localhost');
+        const page = Number(url.searchParams.get('page')) || 1;
+        const pageSize = 20;
+        const start = (page - 1) * pageSize;
+        const paged = items.slice(start, start + pageSize);
+
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify(items));
+        res.end(JSON.stringify(paged));
       });
     },
   };
