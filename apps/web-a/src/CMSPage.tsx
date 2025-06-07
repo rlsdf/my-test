@@ -52,7 +52,7 @@ export const CMSPage: React.FC = () => {
         <>
           <Button
             size="sm"
-            className="mr-2"
+            className="mr-2 bg-sky-500 hover:bg-sky-600"
             onClick={() => alert(`edit ${it.id}`)}
           >
             edit
