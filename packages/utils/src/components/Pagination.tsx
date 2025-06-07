@@ -37,7 +37,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={handlePrev}
         disabled={isPrevDisabled}
         size="sm"
-        className="px-2"
+        className="py-1 px-3 text-sm"
       >
         Prev
       </Button>
@@ -45,7 +45,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <button
           key={p}
           onClick={() => onPageChange(p)}
-          className={`px-3 py-1 rounded-md border border-neutral-300 bg-white text-gray-800 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+          className={`px-3 py-1 text-sm rounded-md border border-neutral-300 bg-white text-gray-800 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
             p === currentPage ? 'font-semibold' : ''
           }`}
         >
@@ -56,7 +56,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={handleNext}
         disabled={isNextDisabled}
         size="sm"
-        className="px-2"
+        className="py-1 px-3 text-sm"
       >
         Next
       </Button>
