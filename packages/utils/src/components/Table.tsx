@@ -22,7 +22,7 @@ export const Table = <T extends Record<string, any>>({
     <thead className="bg-stone-200 text-stone-700">
       <tr>
         {columns.map((col) => (
-          <th key={String(col.key)} className="px-4 py-2 text-left">
+          <th key={String(col.key)} className="px-4 py-3 text-left">
             {col.header}
           </th>
         ))}
