@@ -54,19 +54,19 @@ export const CMSPage: React.FC = () => {
         <>
           <Button
             size="sm"
-            className="mr-2 p-1"
+            className="mr-2 p-1 bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 focus:ring-gray-300"
             aria-label={`edit ${it.id}`}
             onClick={() => alert(`edit ${it.id}`)}
           >
-            <EditIcon className="w-4 h-4" />
+            <EditIcon className="w-4 h-4 text-gray-700" />
           </Button>
           <Button
             size="sm"
-            className="bg-red-500 hover:bg-red-600 p-1"
+            className="p-1 bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 focus:ring-gray-300"
             aria-label={`delete ${it.id}`}
             onClick={() => alert(`delete ${it.id}`)}
           >
-            <TrashIcon className="w-4 h-4" />
+            <TrashIcon className="w-4 h-4 text-gray-700" />
           </Button>
         </>
       ),
