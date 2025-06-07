@@ -38,7 +38,7 @@ export const Table = <T extends Record<string, any>>({
         >
           {columns.map((col) => (
             <td key={String(col.key)} className="px-4 py-2 border-b">
-              {String(row[col.key])}
+              {row[col.key] as React.ReactNode}
             </td>
           ))}
         </tr>
