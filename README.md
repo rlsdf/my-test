@@ -65,6 +65,22 @@ my-test/
   pnpm dev:web-b
   ```
 
+## Versioning management
+### 변경 사항 기록(Changeset 생성)
+  ```bash
+  npx changeset
+  ```
+- 방향키로 이동하고 스페이스키로 어떤 패키지의 버전을 올릴지 선택할 수 있습니다.
+- 어떤 버전(major, minor, patch)을 올릴지 고릅니다.
+- `.changeset/` 디렉토리에 변경 기록 파일이 생성됩니다
+
+### 버전 업데이트 반영
+  ```bash
+  npx changeset version
+  ```
+- `package.json` 에 버전이 업데이트 됩니다.
+- `CHANGELOG.md` 도 자동 생성됩니다.
+
 Each command starts the corresponding Vite dev server so you can open the app in your browser.
 
 ## Using the shared utilities
