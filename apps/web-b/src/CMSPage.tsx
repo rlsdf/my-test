@@ -7,6 +7,8 @@ import {
   Column,
   Select,
   Pagination,
+  EditIcon,
+  TrashIcon,
 } from '@my/utils';
 
 interface Item {
@@ -52,17 +54,19 @@ export const CMSPage: React.FC = () => {
         <>
           <Button
             size="sm"
-            className="mr-2"
+            className="mr-2 p-1"
+            aria-label={`edit ${it.id}`}
             onClick={() => alert(`edit ${it.id}`)}
           >
-            edit
+            <EditIcon className="w-4 h-4" />
           </Button>
           <Button
             size="sm"
-            className="bg-red-500 hover:bg-red-600"
+            className="bg-red-500 hover:bg-red-600 p-1"
+            aria-label={`delete ${it.id}`}
             onClick={() => alert(`delete ${it.id}`)}
           >
-            delete
+            <TrashIcon className="w-4 h-4" />
           </Button>
         </>
       ),
