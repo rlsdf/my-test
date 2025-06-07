@@ -6,3 +6,4 @@ export { Table } from './components/Table';
 export type { Column, TableProps } from './components/Table';
 export { Select } from './components/Select';
 export { Pagination } from './components/Pagination';
+export { mockApiPlugin } from './mockApiPlugin';

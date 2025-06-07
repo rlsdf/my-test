@@ -16,16 +16,7 @@ interface Item {
   createdDate: string;
 }
 
-const generateMockData = (): Item[] =>
-  Array.from({ length: 60 }, (_, i) => ({
-    id: i + 1,
-    title: `Post ${i + 1}`,
-    status: i % 2 === 0 ? 'active' : 'inactive',
-    createdDate: `2023-07-${String((i % 30) + 1).padStart(2, '0')}`,
-  }));
-
-const fetchMock = () =>
-  axios.get('/api/items').then(() => ({ data: generateMockData() }));
+const fetchItems = () => axios.get<Item[]>('/api/items');
 
 const columns: Column<Item & { actions: React.ReactNode }>[] = [
   { key: 'id', header: 'ID' },
@@ -42,7 +33,7 @@ export const CMSPage: React.FC = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetchMock().then((res) => setItems(res.data));
+    fetchItems().then((res) => setItems(res.data));
   }, []);
 
   const filtered = items.filter(
