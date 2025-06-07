@@ -45,8 +45,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         <button
           key={p}
           onClick={() => onPageChange(p)}
-          className={`px-3 py-1 rounded border border-gray-300 bg-white text-gray-800 ${
-            p === currentPage ? 'font-bold' : ''
+          className={`px-3 py-1 rounded-md border border-neutral-300 bg-white text-gray-800 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+            p === currentPage ? 'font-semibold' : ''
           }`}
         >
           {p}

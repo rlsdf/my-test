@@ -54,7 +54,7 @@ export const CMSPage: React.FC = () => {
         <>
           <Button
             size="sm"
-            className="mr-2 p-1 bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 focus:ring-gray-300"
+            className="mr-2 p-1 bg-white text-gray-700 border border-neutral-300 hover:bg-neutral-100 focus-visible:ring-blue-500"
             aria-label={`edit ${it.id}`}
             onClick={() => alert(`edit ${it.id}`)}
           >
@@ -62,7 +62,7 @@ export const CMSPage: React.FC = () => {
           </Button>
           <Button
             size="sm"
-            className="p-1 bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 focus:ring-gray-300"
+            className="p-1 bg-white text-gray-700 border border-neutral-300 hover:bg-neutral-100 focus-visible:ring-blue-500"
             aria-label={`delete ${it.id}`}
             onClick={() => alert(`delete ${it.id}`)}
           >
