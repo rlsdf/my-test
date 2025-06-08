@@ -1,4 +1,5 @@
 import React, { useEffect, useState, ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
   Input,
@@ -57,6 +58,7 @@ export const CMSPage: React.FC = () => {
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState('all');
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchItems(page).then((res) => setItems(res.data));
@@ -96,6 +98,9 @@ export const CMSPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold text-gray-900 mb-8">{greet('web-b')}</h1>
+      <div className="mb-4 flex justify-end">
+        <Button onClick={() => navigate('/add-item')}>Add Item</Button>
+      </div>
       <div className="bg-white rounded-lg p-6">
         <div className="flex flex-col md:flex-row gap-4 mb-6">
           <div className="flex-1">
