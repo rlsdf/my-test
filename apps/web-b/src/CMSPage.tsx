@@ -9,6 +9,7 @@ import {
   Pagination,
   EditIcon,
   TrashIcon,
+  greet,
 } from '@my/utils';
 
 interface Item {
@@ -24,23 +25,29 @@ const fetchItems = (page: number) =>
 const columns: Column<Item & { actions: ReactElement }>[] = [
   { key: 'id', header: 'ID' },
   { key: 'title', header: 'Title' },
-  { 
-    key: 'status', 
+  {
+    key: 'status',
     header: 'Status',
     render: (value) => (
-      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-        value === 'active' 
-          ? 'bg-green-100 text-green-800' 
-          : 'bg-gray-100 text-gray-800'
-      }`}>
+      <span
+        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+          value === 'active'
+            ? 'bg-green-100 text-green-800'
+            : 'bg-red-100 text-red-800'
+        }`}
+      >
         {String(value)}
       </span>
-    )
+    ),
   },
-  { 
-    key: 'createdDate', 
+  {
+    key: 'createdDate',
     header: 'Created',
-    render: (value) => <>{new Date(String(value)).toLocaleDateString()}</>
+    render: (value) => (
+      <span>
+        {new Date(String(value)).toLocaleDateString()}
+      </span>
+    ),
   },
   { key: 'actions', header: 'Actions' },
 ];
@@ -63,7 +70,7 @@ export const CMSPage: React.FC = () => {
 
   const totalPages = 3;
   const pageData = filtered.map((it) => ({
-    ...it,
+      ...it,
       actions: (
         <>
           <Button
@@ -84,49 +91,52 @@ export const CMSPage: React.FC = () => {
           </Button>
         </>
       ),
-  }));
+    }));
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr,auto,auto] gap-4 items-center">
-          <Input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by title..."
-            className="w-full px-4 py-2 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-          />
-          <Select 
-            value={status} 
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-semibold text-gray-900 mb-8">{greet('web-b')}</h1>
+      <div className="bg-white rounded-lg p-6">
+        <div className="flex flex-col md:flex-row gap-4 mb-6">
+          <div className="flex-1">
+            <Input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search title"
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+            />
+          </div>
+          <Select
+            value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full md:w-40 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+            className="md:w-40 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-blue-500"
           >
-            <option value="all">All Status</option>
+            <option value="all">All</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </Select>
-          <Button 
+          <Button
             onClick={() => setPage(1)}
-            className="w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Search
           </Button>
         </div>
-        
-        <div className="overflow-hidden rounded-lg border border-gray-200">
-          <Table 
-            data={pageData} 
-            columns={columns} 
-            className="min-w-full divide-y divide-gray-200"
+
+        <div className="overflow-x-auto rounded-lg border border-gray-200">
+          <Table
+            data={pageData}
+            columns={columns}
+            className="min-w-full"
           />
         </div>
-        
-        <div className="flex justify-center pt-4">
+
+        <div className="flex justify-center mt-6">
           <Pagination
             currentPage={page}
             totalPages={totalPages}
             onPageChange={setPage}
-            className="inline-flex shadow-sm"
+            className="inline-flex shadow-sm rounded-md"
           />
         </div>
       </div>
