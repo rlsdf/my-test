@@ -1,4 +1,5 @@
 import React, { useEffect, useState, ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
   Input,
@@ -57,6 +58,7 @@ export const CMSPage: React.FC = () => {
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState('all');
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchItems(page).then((res) => setItems(res.data));
@@ -121,6 +123,7 @@ export const CMSPage: React.FC = () => {
           >
             Search
           </Button>
+          <Button onClick={() => navigate('/add-item')}>Add Item</Button>
         </div>
 
         <div className="overflow-x-auto rounded-lg border border-gray-200">
