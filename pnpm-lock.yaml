@@ -23,6 +23,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.7.0
         version: 6.21.0(eslint@8.57.1)(typescript@5.8.3)
+      autoprefixer:
+        specifier: ^10.4.21
+        version: 10.4.21(postcss@8.5.4)
       axios:
         specifier: ^1.6.0
         version: 1.9.0
@@ -63,9 +66,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.0.0
         version: 4.5.1(vite@4.5.14)
-      autoprefixer:
-        specifier: ^10.4.0
-        version: 10.4.21(postcss@8.5.4)
       vite:
         specifier: ^4.0.0
         version: 4.5.14
@@ -79,18 +79,11 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.0.0
         version: 4.5.1(vite@4.5.14)
-      autoprefixer:
-        specifier: ^10.4.0
-        version: 10.4.21(postcss@8.5.4)
       vite:
         specifier: ^4.0.0
         version: 4.5.14
 
-  packages/utils:
-    dependencies:
-      react:
-        specifier: ^18.0.0
-        version: 18.3.1
+  packages/utils: {}
 
 packages:
 

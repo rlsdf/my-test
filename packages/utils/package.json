@@ -12,8 +12,5 @@
     "build": "tsc -p tsconfig.json",
     "lint": "eslint . --ext ts,tsx",
     "type-check": "tsc -p tsconfig.json --noEmit"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0"
   }
 }
