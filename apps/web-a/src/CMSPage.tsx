@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactElement } from 'react';
 import axios from 'axios';
 import {
   Input,
@@ -21,11 +21,29 @@ interface Item {
 const fetchItems = (page: number) =>
   axios.get<Item[]>('/api/items', { params: { page } });
 
-const columns: Column<Item & { actions: React.ReactNode }>[] = [
+const columns: Column<Item & { actions: ReactElement }>[] = [
   { key: 'id', header: 'ID' },
   { key: 'title', header: 'Title' },
-  { key: 'status', header: 'Status' },
-  { key: 'createdDate', header: 'Created' },
+  {
+    key: 'status',
+    header: 'Status',
+    render: (value) => (
+      <span
+        className={`px-3 py-1 rounded-full text-sm font-medium ${
+          value === 'active'
+            ? 'bg-green-100 text-green-800'
+            : 'bg-gray-100 text-gray-800'
+        }`}
+      >
+        {String(value)}
+      </span>
+    ),
+  },
+  {
+    key: 'createdDate',
+    header: 'Created',
+    render: (value) => <>{new Date(String(value)).toLocaleDateString()}</>,
+  },
   { key: 'actions', header: 'Actions' },
 ];
 
@@ -71,26 +89,49 @@ export const CMSPage: React.FC = () => {
     }));
 
   return (
-    <div className="space-y-4">
-      <div className="flex space-x-2 items-center">
-        <Input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search title"
-        />
-        <Select value={status} onChange={(e) => setStatus(e.target.value)}>
-          <option value="all">All</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </Select>
-        <Button onClick={() => setPage(1)}>Search</Button>
+    <div className="max-w-7xl mx-auto">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr,auto,auto] gap-4 items-center">
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search by title..."
+            className="w-full px-4 py-2 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+          />
+          <Select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="w-full md:w-40 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+          >
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </Select>
+          <Button
+            onClick={() => setPage(1)}
+            className="w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Search
+          </Button>
+        </div>
+
+        <div className="overflow-hidden rounded-lg border border-gray-200">
+          <Table
+            data={pageData}
+            columns={columns}
+            className="min-w-full divide-y divide-gray-200"
+          />
+        </div>
+
+        <div className="flex justify-center pt-4">
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+            className="inline-flex shadow-sm"
+          />
+        </div>
       </div>
-      <Table data={pageData} columns={columns} className="min-w-full" />
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={setPage}
-      />
     </div>
   );
 };

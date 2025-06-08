@@ -3,6 +3,7 @@ import React from 'react';
 export interface Column<T> {
   key: keyof T;
   header: string;
+  render?: (value: T[keyof T], row: T) => React.ReactElement;
 }
 
 export interface TableProps<T> {
@@ -22,7 +23,7 @@ export const Table = <T extends Record<string, any>>({
     <thead className="bg-neutral-100 text-neutral-700">
       <tr>
         {columns.map((col) => (
-          <th key={String(col.key)} className="px-4 py-3 text-left">
+          <th key={String(col.key)} className="px-4 py-3 text-left font-semibold">
             {col.header}
           </th>
         ))}
@@ -36,7 +37,7 @@ export const Table = <T extends Record<string, any>>({
         >
           {columns.map((col) => (
             <td key={String(col.key)} className="px-4 py-2 border-b">
-              {row[col.key] as React.ReactNode}
+              {col.render ? col.render(row[col.key], row) : row[col.key]}
             </td>
           ))}
         </tr>
