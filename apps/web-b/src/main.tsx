@@ -4,7 +4,6 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CMSPage } from './CMSPage';
 import { AddItemPage } from './AddItemPage';
-import { greet } from '@my/utils';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
