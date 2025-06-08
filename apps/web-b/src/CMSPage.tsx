@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
   Input,
-  Button,
+  PrimaryButton,
   Table,
   Column,
   Select,
@@ -75,22 +75,22 @@ export const CMSPage: React.FC = () => {
       ...it,
       actions: (
         <>
-          <Button
+          <PrimaryButton
             size="sm"
             className="mr-2 p-1 bg-white text-gray-700 border border-neutral-300 hover:bg-neutral-100 focus-visible:ring-blue-500"
             aria-label={`edit ${it.id}`}
             onClick={() => alert(`edit ${it.id}`)}
           >
             <EditIcon className="w-4 h-4 text-gray-700" />
-          </Button>
-          <Button
+          </PrimaryButton>
+          <PrimaryButton
             size="sm"
             className="p-1 bg-white text-gray-700 border border-neutral-300 hover:bg-neutral-100 focus-visible:ring-blue-500"
             aria-label={`delete ${it.id}`}
             onClick={() => alert(`delete ${it.id}`)}
           >
             <TrashIcon className="w-4 h-4 text-gray-700" />
-          </Button>
+          </PrimaryButton>
         </>
       ),
     }));
@@ -117,13 +117,13 @@ export const CMSPage: React.FC = () => {
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </Select>
-          <Button
+          <PrimaryButton
             onClick={() => setPage(1)}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Search
-          </Button>
-          <Button onClick={() => navigate('/add-item')}>Add Item</Button>
+          </PrimaryButton>
+          <PrimaryButton onClick={() => navigate('/add-item')}>Add Item</PrimaryButton>
         </div>
 
         <div className="overflow-x-auto rounded-lg border border-gray-200">

@@ -6,7 +6,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'sm' | 'md';
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const PrimaryButton: React.FC<ButtonProps> = ({
   className = '',
   size = 'md',
   ...props

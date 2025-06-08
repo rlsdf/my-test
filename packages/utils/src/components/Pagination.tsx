@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from './Button';
+import { PrimaryButton } from './PrimaryButton';
+import { InfoButton } from './InfoButton';
 
 export interface PaginationProps {
   currentPage: number;
@@ -33,33 +34,38 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className={`flex items-center justify-center space-x-1 ${className}`}>
-      <Button
+      <InfoButton
         onClick={handlePrev}
         disabled={isPrevDisabled}
         size="sm"
-        className="py-1 px-3 text-sm"
+        className="px-4 py-2 text-sm"
       >
         Prev
-      </Button>
+      </InfoButton>
       {pages.map((p) => (
-        <button
+        p === currentPage ? (<PrimaryButton
           key={p}
           onClick={() => onPageChange(p)}
-          className={`px-3 py-1 text-sm rounded-md border border-neutral-300 bg-white text-gray-800 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
-            p === currentPage ? 'font-semibold' : ''
-          }`}
+          className={`px-4 py-2 text-sm`}
         >
           {p}
-        </button>
+        </PrimaryButton>) : (<InfoButton
+          key={p}
+          onClick={() => onPageChange(p)}
+          className={`px-4 py-2 text-sm`}
+        >
+          {p}
+        </InfoButton>)
+        
       ))}
-      <Button
+      <InfoButton
         onClick={handleNext}
         disabled={isNextDisabled}
         size="sm"
-        className="py-1 px-3 text-sm"
+        className="px-4 py-2 text-sm"
       >
         Next
-      </Button>
+      </InfoButton>
     </div>
   );
 };

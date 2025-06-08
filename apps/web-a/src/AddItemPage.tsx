@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Select, Button } from '@my/utils';
+import { Input, Select, PrimaryButton } from '@my/utils';
 
 export const AddItemPage: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -28,9 +28,9 @@ export const AddItemPage: React.FC = () => {
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </Select>
-        <Button type="submit" className="w-full">
+        <PrimaryButton type="submit" className="w-full">
           Save
-        </Button>
+        </PrimaryButton>
       </form>
     </div>
   );

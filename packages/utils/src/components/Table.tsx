@@ -18,7 +18,7 @@ export const Table = <T extends Record<string, any>>({
   className = '',
 }: TableProps<T>) => (
   <table className={`min-w-full divide-y divide-gray-200 ${className}`}>
-    <thead>
+    <thead className='bg-gray-50'>
       <tr>
         {columns.map((col) => (
           <th
@@ -33,7 +33,7 @@ export const Table = <T extends Record<string, any>>({
     </thead>
     <tbody className="bg-white divide-y divide-gray-200">
       {data.map((row, idx) => (
-        <tr key={idx}>
+        <tr key={idx} className="hover:bg-gray-50">
           {columns.map((col) => (
             <td key={String(col.key)} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
               {col.render ? col.render(row[col.key], row) : row[col.key]}

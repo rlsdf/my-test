@@ -1,7 +1,7 @@
 export const greet = (name: string) => `Hello, ${name}!`;
 
 export { Input } from './components/Input';
-export { Button } from './components/Button';
+export { PrimaryButton } from './components/PrimaryButton';
 export { Table } from './components/Table';
 export type { Column, TableProps } from './components/Table';
 export { Select } from './components/Select';
